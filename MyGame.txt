@@ -1,0 +1,373 @@
+﻿
+@echo off
+title MyGame Launcher
+color 9a
+mode con: lines=37
+goto Begrüßung
+
+:Begrüßung
+echo Willkommen zuruck %Q% !
+echo Wird geladen
+timeout 1 >nul
+cls
+goto RegorLogin
+REM timeout funktioniert leider nur für ganze Sekunden
+
+:RegorLogin
+cls 
+color 9a
+echo.
+echo                       -MYGAME LAUNCHER-
+echo =====================================================================
+echo   Haben sie bereits einen Account oder mochten Sie einen erstellen?
+echo.
+echo     1. Anmelden
+echo     2. Registrieren
+echo     3. Gast Zugriff
+echo     4. Drucke niemals die Vier und dann Enter!
+echo.
+echo =====================================================================
+echo 2019 Copyright nicht vorhanden :(
+echo. 
+echo Bestatigen Sie ihre Auswahl mit Enter
+echo.
+set /p A=Auswahl : 
+if %A% EQU 1 goto Einloggen
+if %A% EQU 2 goto Registrieren
+if %A% EQU 3 goto Gastzugriff
+if %A% EQU 4 goto TerribleFate
+
+:Einloggen
+cls
+echo.
+echo Geben Sie ihren Benutzernamen ein!
+echo Drucken Sie die Taste "1" um zuruckzukehren
+echo.
+set /p Y= Benutzername : 
+if %Y% EQU %Q% goto Einloggen2
+if %Y% EQU 1 goto RegorLogin
+if %Y% EQU Philipp goto Hauptscreen
+
+:Einloggen2
+cls
+echo.
+echo Willkommen zuruck %Q%. Bitte geben Sie ihr Passwort ein
+echo oder drucken sie die Taste "1" um zuruckzukehren
+echo.
+set /p BN= Passwort : 
+if /i %BN% EQU Passwort goto Eingeloggt
+if /i %BN% EQU passwort goto Eingeloggt
+if /i %BN% EQU Thememypc.net goto Eingeloggt
+if %BN% EQU %W% goto Eingeloggt
+if %BN% EQU 1 goto RegorLogin
+
+:Registrieren
+cls
+echo.
+echo Email Adresse eingeben:
+set /p E=
+echo Benutzername
+set /p Q=
+echo Passwort eingeben:
+set /p W=
+cls
+echo Email : %E%>>c:\logs\Registrieren.txt
+echo Nutzername : %Q%>>c:\logs\Registrieren.txt
+echo Passwort : %W%>>c:\logs\Registrieren.txt
+cls
+echo.
+echo Herzlichen Gluckwunsch zur Erstellung ihres MyGame Accounts 
+echo.
+echo Drucken sie eine beliebige Taste
+timeout 999 >nul
+cls
+goto RegorLogin
+
+:Hauptscreen
+Cls
+color 2a
+echo.
+echo                          HAUPTMENU V.3
+echo.   ==========================================================
+echo    =               Willkommen zuruck %Q% !                  =)
+echo    ==========================================================
+echo.   =                                                        =
+echo    =   1. Starte die CMD                                    =
+echo.   =                                                        =
+echo    =   2. Starte YouTube                                    =
+echo.   =                                                        =
+echo    =   3. Yee                                               =
+echo    =                                                        =
+echo    =   4. Rechner                                           =
+echo    =                                                        =
+echo    =   5. Betriebssystem erkennen                           =  
+echo    =                                                        =
+echo.   =   X. Coming Soon                                       =
+echo    =                                                        =
+echo    =   9. Informationen anzeigen                            =
+echo.   =                                                        =
+echo    =  10. Ausloggen                                         =
+echo.   =                                                        =
+echo    ==========================================================
+echo.
+set /p A= Auswahl: 
+if %A% EQU 1 goto StartCMD
+if %A% EQU 2 goto StartYouTube
+if %A% EQU 3 goto Yee
+if %A% EQU 4 goto Rechner
+if %A% EQU 5 goto Betriebssystem
+if %A% EQU X goto Fehler
+if %A% EQU x goto Fehler
+if %A% EQU 9 goto Informationen
+if %A% EQU 10 goto RegorLogin
+pause > nul
+
+:StartCMD
+start cmd.exe
+goto Hauptscreen
+
+:StartYouTube
+start https://www.youtube.com/playlist?list=PLFsQleAWXsj_4yDeebiIADdH5FMayBiJo
+goto Hauptscreen
+
+:Yee
+Cls
+echo ░░░░░░░░░░░░▄███▄▄▄░░░░░░░ 
+echo ░░░░░░░▄▄▄██▀▀▀▀███▄░░░░░░ 
+echo ░░░░░▄▀▀░░░░░░░░░░░▀█░░░░░ 
+echo ░░▄▄▀░░░░░░░░░░░░░░░▀█░░░░ 
+echo ░░█░░░░░▀▄░░▄▀░░░░░░░░█░░░ 
+echo ░░▐██▄░░▀▄▀▀▄▀░░▄██▀░▐▌░░░ 
+echo ░░█▀█░▀░░░▀▀░░░▀░█▀░░▐▌░░░ 
+echo ░░█░░▀▐░░░░░░░░▌▀░░░░░█░░░ 
+echo ░█░░░░░░░░░░░░░░░░░░░█░░░░ 
+echo ░░█░░▀▄░░░░▄▀░░░░░░░░█░░░░ 
+echo ░░█░░░░░░░░░░░▄▄░░░░█░░░░░ 
+echo ░░░█▀██▀▀▀▀██▀░░░░░░█░░░░░ 
+echo ░░░█░░▀████▀░░░░░░░█░░░░░░ 
+echo ░░░░█░░░░░░░░░░░░▄█░░░░░░░
+echo ░░░░░██░░░░░█▄▄▀▀░█░░░░░░░ 
+echo ░░░░░░▀▀█▀▀▀▀░░░░░░█░░░░░░ 
+echo ░░░░░░░█░░░░░░░░░░░░█░░░░░
+echo.
+echo Druecke die 1 und dann Enter um zum Menu zuruckzukehren
+echo.
+set /p A= Auswahl: 
+if %A% EQU 1 goto Hauptscreen
+
+:Rechner
+cls
+set input=
+set input2=
+set input3=
+
+set /p "input=%input% 1.Zahl: "
+set /p "input2=%input2% Operator: "
+set /p "input3=%input3% 2.Zahl: "
+
+echo.
+echo.
+echo Ergebnis:
+set /a ergebnis=%input%%input2%%input3%
+echo.
+echo.
+echo %input%%input2%%input3%=%ergebnis%
+echo.
+echo Drucke eine beliebige Taste um zuruckzukehren
+pause >nul
+goto Hauptscreen
+
+:Wrongpass
+Cls
+goto Einloggen
+
+:Informationen
+Cls
+echo Microsoft Windows 7 Professional V.6.1.7601
+echo MyGame Launcher V 0.0.3
+echo.
+echo Server Specifications:
+echo Asus ROG Strix B450-f Gaming Mainbaord
+echo AMD Ryzen 5 2600 6x3,4Ghz
+echo Asus ROG Strix AMD Radeon Vega 64 OC 8GB
+echo 16GB Viper-DDR4 RAM, 3200Mhz
+echo 3TB Toshiba HDD
+echo 120GB Kingston A400 SSD
+echo Thermaltake 700 Watt RGB Netzteil
+echo Thermaltake Level 20 MT Case mit 4 vorinstallierten Thermaltake RGB Lüftern 120mm
+echo.
+echo Drucke die 1 und dann Enter um zum Menu zuruckzukehren
+set /p A= Auswahl: 
+if %A% EQU 1 goto Hauptscreen
+if %A% NEQ 1 goto Cls
+
+:Gastzugriff
+Cls
+echo.
+echo Wie heissen Sie?
+set /p N=
+echo Name : %N%>>c:\logs\Name.txt
+cls
+echo Willkommen %N%
+echo Drucken sie eine beliebige Taste
+pause >nul
+goto Hauptscreen
+
+:TerribleFate
+color 4f
+cls
+start https://www.youtube.com/watch?v=XP7KRHY564M
+goto TerribleFateZwei
+
+REM Set /p --> Variable
+REM Start --> öffnet das Programm
+REM if
+REM False
+REM Cls --> cleared screen
+REM echo --> gibt Text aus
+REM echo %BN% gibt den festgelegten Wert füt BN wieder (Passwort oder Benutzername)
+:TerribleFateZwei
+echo.
+echo You shouldnt have done that
+timeout 3 >nul /nobreak
+start cmd.exe
+goto TerribleFateZwei
+
+:Eingeloggt
+cls
+echo Erfolgreich Eingeloggt!
+echo Ladevorgang.
+timeout 1 >nul
+echo Schalten sie die Konsole auf Vollbild!
+cls
+echo Erfolgreich Eingeloggt!
+echo Ladevorgang..
+timeout 1 >nul
+cls
+echo Erfolgreich Eingeloggt!
+echo Ladevorgang...
+timeout 1 >nul
+cls
+echo Erfolgreich Eingeloggt!
+echo Ladevorgang
+timeout 1 >nul
+cls
+echo Erfolgreich Eingeloggt!
+echo Ladevorgang.
+timeout 1 >nul
+cls
+echo Erfolgreich Eingeloggt!
+echo Ladevorgang..
+timeout 1 >nul
+cls
+echo Erfolgreich Eingeloggt!
+echo Ladevorgang...
+timeout 1 >nul
+goto Hauptscreen
+
+:Cls
+Cls
+goto Einloggen
+
+:Fehler
+cls
+echo Ein Fehler ist aufgetreten
+echo Descr. diese Variable existiert nicht
+echo C:\Users\Desktop\MyGame Error
+echo.
+echo drucken Sie die 1 um zuruckzukehren
+echo drucken Sie die 2 fur Fehlerbericht
+echo.
+set /p A=Auswahl = 
+if %A% EQU 1 goto Hauptscreen
+if %A% EQU 2 goto Fehlerbericht
+
+:Fehlerbericht
+cls
+echo.
+echo ihr Fehlerbericht wurde als error.txt auf Datentrager C:\logs\error gespeichert
+echo Diese Variable ist falschgeschrieben oder existiert nicht>>c:\logs\error.txt
+timeout 3 /nobreak >nul
+goto Hauptscreen
+
+:Betriebssystem
+rem diese Batch prueft das OS
+
+VER |find /i "Windows 95" >NUL
+IF NOT ERRORLEVEL 1 GOTO 95
+VER |find /i "Windows 98" >NUL
+IF NOT ERRORLEVEL 1 GOTO 98
+VER |find /i "Windows Millennium" >NUL
+IF NOT ERRORLEVEL 1 GOTO ME
+VER | find "XP" > nul
+IF %errorlevel% EQU 0 GOTO XP
+VER | find "2000" > nul
+IF %errorlevel% EQU 0 GOTO 2000
+VER | find "NT" > nul
+IF %errorlevel% EQU 0 GOTO NT
+VER | find "Microsoft Windows [Version 6.0" > nul
+IF %errorlevel% EQU 0 GOTO Vista
+VER | find "Microsoft Windows [Version 6.1" > nul
+IF %errorlevel% EQU 0 GOTO W7
+VER | find "Microsoft Windows [Version 6.2" > nul
+IF %errorlevel% EQU 0 GOTO W8
+VER | find "Microsoft Windows [Version 6.3" > nul
+IF %errorlevel% EQU 0 GOTO W81
+VER | find "Microsoft Windows [Version 5" > nul
+IF %errorlevel% EQU 0 GOTO 2003
+goto unknown
+goto end
+
+:unknown
+echo unknown
+goto end
+
+:95
+echo 95
+goto end
+
+:98
+echo 98
+goto end
+
+:ME
+echo ME
+goto end
+
+:NT
+echo NT
+goto end
+
+:2000
+echo 2000
+goto end
+
+:XP
+echo XP
+goto end
+
+:Vista
+echo Vista
+goto end
+
+:W7
+echo Ihr aktuelles Betriebssystem ist Windows 7
+goto end
+
+:W8
+echo W8
+goto end
+
+:W81
+echo Windows 8.1
+goto end
+
+:2003
+echo 2003
+goto end
+
+:end
+cls
+echo.
+pause >nul
+goto Hauptscreen
